@@ -1,0 +1,19 @@
+<% if (EASY_EXTENSIONS_ENABLED && !is_mobile_device?) || !EASY_EXTENSIONS_ENABLED %>
+  <div id="google_translate_element"></div>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'cs', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL}, 'google_translate_element');
+    }
+    $(window).load(function() {
+      if (! typeof CKEDITOR === 'undefined') {
+        issue_editor = CKEDITOR.instances.issue_description
+        if (issue_editor) {
+          try {
+            issue_editor.resize(380,250);
+          } catch (err) {}
+        }
+      }
+    })
+  </script>
+  <script src="<%= Setting.protocol -%>://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" type="text/javascript"></script>
+<% end %>
